@@ -2,6 +2,14 @@
 
 Runs youtube-dl and parses its download output.
 
+### Usage
+
+To use this crate, add `youtube-dl-parser` as a dependency to your project's `Cargo.toml`:
+
+```toml
+[dependencies]
+youtube-dl-parser = "0.1.0"
+```
 
 ### Features
 
