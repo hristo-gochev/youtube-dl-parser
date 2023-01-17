@@ -1,14 +1,6 @@
 /*!
 Crate `youtube-dl-parser` runs youtube-dl and parses its download output.
 
-# Important
-In order to use the functions provided by the library, [youtube-dl](https://github.com/ytdl-org/youtube-dl)
-and [FFmpeg](https://github.com/FFmpeg/FFmpeg) must be added to PATH or be in the current directory.
-
-### Work in progress
-
-The crate is currently work in progress and only parses the output of YouTube mp3 and mp4 downloads.
-
 # Usage
 To use this crate, add `youtube-dl-parser` as a dependency to your project's `Cargo.toml`:
 
@@ -16,6 +8,14 @@ To use this crate, add `youtube-dl-parser` as a dependency to your project's `Ca
 [dependencies]
 youtube-dl-parser = "0.1.0"
 ```
+
+# Important
+In order to use the functions provided by the library, [youtube-dl](https://github.com/ytdl-org/youtube-dl)
+and [FFmpeg](https://github.com/FFmpeg/FFmpeg) must be added to PATH or be in the current directory.
+
+# Work in progress
+
+The crate is currently work in progress and only parses the output of YouTube mp3 and mp4 downloads.
 
 # Example: Start a youtube-dl mp3 download and match on its output:
 ```
