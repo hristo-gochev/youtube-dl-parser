@@ -13,8 +13,8 @@ youtube-dl-parser = "0.1.0"
 
 ### Features
 
-* Provides an output reader for youtube-dl processes that parses each line.
-* Provides a raw output reader for youtube-dl process.
+* Provides an iterator over youtube-dl download outputs.
+* Provides an additional iterator that parses each output.
 * Exposes duct expressions for mp3 and mp4 youtube-dl downloads.
 
 ### Important
