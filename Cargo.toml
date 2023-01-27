@@ -1,13 +1,13 @@
 [package]
 name = "youtube-dl-parser"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
-authors = ["hristo-gochev"]
+authors = ["hristogochev"]
 description = "Runs youtube-dl and parses its download output."
 license = "MIT"
 documentation = "https://docs.rs/youtube-dl-parser/"
-homepage = "https://github.com/hristo-gochev/youtube-dl-parser"
-repository = "https://github.com/hristo-gochev/youtube-dl-parser"
+homepage = "https://github.com/hristogochev/youtube-dl-parser"
+repository = "https://github.com/hristogochev/youtube-dl-parser"
 readme = "README.md"
 keywords = ["youtube-dl", "youtube", "parse", "download"]
 
