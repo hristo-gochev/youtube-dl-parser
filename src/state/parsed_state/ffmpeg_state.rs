@@ -1,14 +1,12 @@
-use anyhow::{anyhow, Error};
-
 /// Occurs when ffmpeg is being used
 pub enum FFmpegState {
     Destination(String),
-    ParseError(Error),
+    ParseError(String),
 }
 
 impl FFmpegState {
     pub fn parse<'a>(mut split: impl DoubleEndedIterator<Item = &'a str> + Send) -> FFmpegState {
-        let Some(first_word)= split.next() else { return FFmpegState::ParseError(anyhow!("Unable to get destination of mp3 file"))};
+        let Some(first_word)= split.next() else { return FFmpegState::ParseError("Unable to get destination of mp3 file".to_owned())};
         match first_word {
             "Destination:" => {
                 let destination = split.collect::<Vec<&str>>().join(" ");
@@ -22,7 +20,7 @@ impl FFmpegState {
             }
             _ => {
                 let leftover = split.collect::<Vec<&str>>().join(" ");
-                FFmpegState::ParseError(anyhow!("{first_word} {leftover}"))
+                FFmpegState::ParseError(format!("{first_word} {leftover}"))
             }
         }
     }

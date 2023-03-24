@@ -9,7 +9,6 @@ pub use crate::state::parsed_state::download_state::DownloadState;
 pub use crate::state::parsed_state::error_state::ErrorState;
 pub use crate::state::parsed_state::ffmpeg_state::FFmpegState;
 pub use crate::state::parsed_state::youtube_state::YoutubeState;
-use anyhow::{anyhow, Error};
 
 enum ParsedStateHeader {
     YouTube,
@@ -29,13 +28,13 @@ pub enum ParsedState {
     Deleting(DeletingState),
     None(String),
     Unknown(String),
-    ParseError(Error),
+    ParseError(String),
 }
 
 impl ParsedState {
     pub fn parse(output: String) -> Self {
         let mut split = output.split(' ').filter(|string| !string.is_empty());
-        let Some(state_header)= split.next() else { return ParsedState::ParseError(anyhow!("Output is empty")) };
+        let Some(state_header)= split.next() else { return ParsedState::ParseError("Output is empty".to_owned()) };
         let Some(state_header) = Self::parse_state_header(state_header) else { return ParsedState::None(output)};
         match state_header {
             ParsedStateHeader::YouTube => ParsedState::Youtube(YoutubeState::parse(split)),

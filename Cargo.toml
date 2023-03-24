@@ -1,6 +1,6 @@
 [package]
 name = "youtube-dl-parser"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2021"
 authors = ["hristogochev"]
 description = "Runs youtube-dl and parses its download output."
@@ -14,5 +14,4 @@ keywords = ["youtube-dl", "youtube", "parse", "download"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-anyhow = "1"
 duct = "0.13"

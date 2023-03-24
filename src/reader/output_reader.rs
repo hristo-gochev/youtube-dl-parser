@@ -1,4 +1,3 @@
-use anyhow::anyhow;
 use duct::ReaderHandle;
 use std::collections::VecDeque;
 use std::io::{BufReader, Read};
@@ -41,7 +40,7 @@ impl Iterator for OutputReader {
         if !self.line_queue.is_empty() {
             let Some(next_output) = self.line_queue.pop_front() else {
                 self.failed=true;
-                return Some(OutputState::Error(anyhow!("Failed to read an output")));
+                return Some(OutputState::Error("Failed to read an output".to_owned()));
             };
             return Some(OutputState::Outputting(next_output));
         }
@@ -52,7 +51,7 @@ impl Iterator for OutputReader {
             Ok(read_size) => read_size,
             Err(err) => {
                 self.failed = true;
-                return Some(OutputState::Error(err.into()));
+                return Some(OutputState::Error(err.to_string()));
             }
         };
 
@@ -79,7 +78,7 @@ impl Iterator for OutputReader {
 
         let Some(that_one) = output.pop_front() else {
             self.failed=true;
-            return Some(OutputState::Error(anyhow!("Failed to read an output")));
+            return Some(OutputState::Error("Failed to read an output".to_owned()));
         };
 
         if output.is_empty() {

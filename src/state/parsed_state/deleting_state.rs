@@ -1,20 +1,18 @@
-use anyhow::{anyhow, Error};
-
 /// Occurs when a temporary file is being deleted
 pub enum DeletingState {
     DeletingTemporaryFile(String),
-    ParseError(Error),
+    ParseError(String),
 }
 
 impl DeletingState {
     pub fn parse<'a>(mut split: impl DoubleEndedIterator<Item = &'a str> + Send) -> DeletingState {
-        let Some(next)=split.next() else { return DeletingState::ParseError( anyhow!("Deleting parse error"))};
+        let Some(next)=split.next() else { return DeletingState::ParseError( "Deleting parse error".to_owned())};
         if next != "original" {
-            return DeletingState::ParseError(anyhow!("Deleting parse error"));
+            return DeletingState::ParseError("Deleting parse error".to_owned());
         }
-        let Some(next)=split.next() else { return DeletingState::ParseError( anyhow!("Deleting parse error"))};
+        let Some(next)=split.next() else { return DeletingState::ParseError( "Deleting parse error".to_owned())};
         if next != "file" {
-            return DeletingState::ParseError(anyhow!("Deleting parse error"));
+            return DeletingState::ParseError("Deleting parse error".to_owned());
         }
         split.next_back();
         split.next_back();

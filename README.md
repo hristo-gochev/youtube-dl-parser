@@ -8,7 +8,7 @@ To use this crate, add `youtube-dl-parser` as a dependency to your project's `Ca
 
 ```toml
 [dependencies]
-youtube-dl-parser = "0.1.1"
+youtube-dl-parser = "0.2.0"
 ```
 
 ### Features
